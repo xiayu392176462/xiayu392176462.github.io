@@ -743,4 +743,44 @@ g[data-mml-node="xypic"] path {
 <body class='typora-export os-windows'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='有限元计算机制流程建设'><span>有限元计算机制流程建设</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#有限元计算机制流程建设">有限元计算机制流程建设</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#简介">简介</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#结构分析报告概述">结构分析报告概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n43"><a class="md-toc-inner" href="#有限元分析checklist清单">有限元分析checklist清单</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n69"><a class="md-toc-inner" href="#参考">参考</a></span></p></div><h2 id='简介'><span>简介</span></h2><p><span>有限元分析 (FEA) 是当今最常用的结构分析工具。随着计算机硬件和软件的进步，有限元分析计算速度和理论都取得了长足的进步，该技术成本也迅速降低，现在已经广泛运用到机械、土木、航空航天、汽车等各个领域。</span></p><p><span>但是由于业内CAE工程师的水平良莠不齐，并不是每个人都能胜任仿真的工作，如果在产品和设备投入使用时发现设计仿真时的错误，此时整改或修正产生的费用是非常昂贵的。</span></p><p><span>当工程师计算通过Abaqus或ANSYS计算得到某个结果时，通常会遇到一个窘境，不知道自己算的到底对不对。这种现象源于对物理现象本质了解的缺失以及对软件认识的匮乏。</span></p><p><span>另外需求提出者往往对有限元认识不足，一方面分析的目的、背景交代不足，另一方面高估或低估团队CAE分析能力，导致重复返工，结果不具有参考价值。</span></p><p><span>因此，合适的机制流程建设应对一下几个方面做出改进：</span></p><ol start='' ><li><span>帮助规避产品设计过程中由于仿真模型输入错误（模型、材料属性、载荷）、有限元模型错误(单元、边界)、后处理和结论错误带来的风险。</span></li><li><span>帮助提高CAE工程师对工作流程认知，提升工程师的认知。</span></li><li><span>帮助需求提出方完善输入，全面思考，避免不必要的仿真。</span></li></ol><h2 id='结构分析报告概述'><span>结构分析报告概述</span></h2><p><span>一个正常的结构分析报告应该包含以下6个部分</span></p><ol start='' ><li><span>项目概述</span></li></ol><p><span>介绍项目的背景、目的、范围，交代分析方法和使用软件。</span></p><ol start='2' ><li><span>评估方法</span></li></ol><p><span>交代有限元计算的评估方法，在附录A中介绍评估流程，并于附录B中介绍评估的案例。</span></p><ol start='3' ><li><span>有限元模型</span></li></ol><p><span>这部分主要介绍有限元的建模方法，采用的单元、边界条件，一些关键的刚度质量计算可以放在附录C中。</span></p><ol start='4' ><li><span>模型校准</span></li></ol><p><span>在出有限元计算标准和指导时，可以提供不同软件或是工程算法与有限元分析对比，放在附录D中。</span></p><ol start='5' ><li><span>结论和建议</span></li></ol><p><span>这部分总结有限元计算的结果，结论或者结构优化提升的建议。</span></p><ol start='6' ><li><span>参考</span></li></ol><p><span>参考文献或书籍。</span></p><p>&nbsp;</p><h2 id='有限元分析checklist清单'><span>有限元分析checklist清单</span></h2><p><span>我们可以将有限元结构分析分为5个部分检查</span></p><ol start='' ><li><span>初步检查</span></li></ol><p><span>初步检查关注项目的背景、目的和意义，文档的完整性，软件的功能性以及个人能力评估。</span></p><ol start='2' ><li><span>工程模型检查</span></li></ol><p><span>该部分主要关注分析的方法和假设、几何的简化和完整性、材料属性、结构的刚度和质量和几何边界等。</span></p><ol start='3' ><li><span>有限元模型检查</span></li></ol><p><span>有限元模型检查用于评估单元属性、网格划分和质量、子结构和子模型、有限元模型的边界和载荷以及求解设置等的正确性。</span></p><ol start='4' ><li><span>有限元结果检查</span></li></ol><p><span>有限元结果检查关注于后处理方法、结构警告和错误排查、应力和位移结果、支反力等方面。</span></p><ol start='5' ><li><span>结论检查</span></li></ol><p><span>结论检查需考核有限元计算是否符合预期，并结合工程实际，对比经验算法和试验，分析有限元模型和实际模型的误差来源差。</span></p><p>&nbsp;</p><p><img src="有限元计算机制流程建设.assets/chart.png" referrerpolicy="no-referrer" alt="chart"></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='参考'><span>参考</span></h2><ol start='' ><li><span>GUIDELINE FOR EVALUATION OF FINITE ELEMENTS AND RESULTS_SSC-387</span></li></ol><p><strong><span>我是FE_cat，感谢您读完本文</span></strong><span>。</span></p><p><strong><span>写于2021年8月12日</span></strong></p><p>&nbsp;</p></div></div>
 </body>
+	
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>内容</h2>
+            </header>
+            <ul>
+                <li><a href="http://feacat.com/index.html">首页</a></li>
+                <li><a href="http://feacat.com/FEA.html">有限元</a></li>
+                <li><a href="http://feacat.com/civil.html">土木</a></li>
+                <li><a href="http://feacat.com/mechanical.html">机械</a></li>
+                <li><a href="http://feacat.com/software.html">软件</a></li>
+                <li><a href="http://feacat.com/book.html">好书推荐</a></li>
+                <li><a href="http://feacat.com/others.html">其他</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section -->
+        <section>
+            <header class="major">
+                <h2>联系我</h2>
+            </header>
+            <p>如果文章需要转载请注明出处，并通过以下方式联系我</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="#">392176462@qq.com</a></li>
+                <li class="icon solid fa-phone">18817729451</li>
+                <li class="icon solid fa-home">上海市</li>
+            </ul>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. All rights reserved.</p>
+        </footer>
+
+    </div>
+</div>
 </html>
