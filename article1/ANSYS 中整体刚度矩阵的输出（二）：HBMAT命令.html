@@ -1,0 +1,2008 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <style type='text/css'>
+                html {
+                    overflow-x: initial !important;
+                }
+
+                :root {
+                    --bg-color: #ffffff;
+                    --text-color: #333333;
+                    --select-text-bg-color: #B5D6FC;
+                    --select-text-font-color: auto;
+                    --monospace: "Lucida Console",Consolas,"Courier",monospace;
+                    --title-bar-height: 20px;
+                }
+
+                .mac-os-11 {
+                    --title-bar-height: 28px;
+                }
+
+                html {
+                    font-size: 14px;
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                body {
+                    margin: 0px;
+                    padding: 0px;
+                    height: auto;
+                    inset: 0px;
+                    font-size: 1rem;
+                    line-height: 1.42857;
+                    overflow-x: hidden;
+                    background: inherit;
+                    tab-size: 4;
+                }
+
+                iframe {
+                    margin: auto;
+                }
+
+                a.url {
+                    word-break: break-all;
+                }
+
+                a:active, a:hover {
+                    outline: 0px;
+                }
+
+                .in-text-selection, ::selection {
+                    text-shadow: none;
+                    background: var(--select-text-bg-color);
+                    color: var(--select-text-font-color);
+                }
+
+                #write {
+                    margin: 0px auto;
+                    height: auto;
+                    width: inherit;
+                    word-break: normal;
+                    overflow-wrap: break-word;
+                    position: relative;
+                    white-space: normal;
+                    overflow-x: visible;
+                    padding-top: 36px;
+                }
+
+                    #write.first-line-indent p {
+                        text-indent: 2em;
+                    }
+
+                        #write.first-line-indent li p, #write.first-line-indent p * {
+                            text-indent: 0px;
+                        }
+
+                    #write.first-line-indent li {
+                        margin-left: 2em;
+                    }
+
+                .for-image #write {
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+
+                body.typora-export {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+
+                .typora-export .footnote-line, .typora-export li, .typora-export p {
+                    white-space: pre-wrap;
+                }
+
+                .typora-export .task-list-item input {
+                    pointer-events: none;
+                }
+
+                @media screen and (max-width: 500px) {
+                    body.typora-export {
+                        padding-left: 0px;
+                        padding-right: 0px;
+                    }
+
+                    #write {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+
+                    .CodeMirror-sizer {
+                        margin-left: 0px !important;
+                    }
+
+                    .CodeMirror-gutters {
+                        display: none !important;
+                    }
+                }
+
+                #write li > figure:last-child {
+                    margin-bottom: 0.5rem;
+                }
+
+                #write ol, #write ul {
+                    position: relative;
+                }
+
+                img {
+                    max-width: 100%;
+                    vertical-align: middle;
+                    image-orientation: from-image;
+                }
+
+                button, input, select, textarea {
+                    color: inherit;
+                    font: inherit;
+                }
+
+                    input[type="checkbox"], input[type="radio"] {
+                        line-height: normal;
+                        padding: 0px;
+                    }
+
+                *, ::after, ::before {
+                    box-sizing: border-box;
+                }
+
+                #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+                    width: inherit;
+                }
+
+                #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+                    position: relative;
+                }
+
+                p {
+                    line-height: inherit;
+                }
+
+                h1, h2, h3, h4, h5, h6 {
+                    break-after: avoid-page;
+                    break-inside: avoid;
+                    orphans: 4;
+                }
+
+                p {
+                    orphans: 4;
+                }
+
+                h1 {
+                    font-size: 2rem;
+                }
+
+                h2 {
+                    font-size: 1.8rem;
+                }
+
+                h3 {
+                    font-size: 1.6rem;
+                }
+
+                h4 {
+                    font-size: 1.4rem;
+                }
+
+                h5 {
+                    font-size: 1.2rem;
+                }
+
+                h6 {
+                    font-size: 1rem;
+                }
+
+                .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+
+                .hidden {
+                    display: none;
+                }
+
+                .md-blockmeta {
+                    color: rgb(204, 204, 204);
+                    font-weight: 700;
+                    font-style: italic;
+                }
+
+                a {
+                    cursor: pointer;
+                }
+
+                sup.md-footnote {
+                    padding: 2px 4px;
+                    background-color: rgba(238, 238, 238, 0.7);
+                    color: rgb(85, 85, 85);
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+
+                    sup.md-footnote a, sup.md-footnote a:hover {
+                        color: inherit;
+                        text-transform: inherit;
+                        text-decoration: inherit;
+                    }
+
+                #write input[type="checkbox"] {
+                    cursor: pointer;
+                    width: inherit;
+                    height: inherit;
+                }
+
+                figure {
+                    overflow-x: auto;
+                    margin: 1.2em 0px;
+                    max-width: calc(100% + 16px);
+                    padding: 0px;
+                }
+
+                    figure > table {
+                        margin: 0px;
+                    }
+
+                tr {
+                    break-inside: avoid;
+                    break-after: auto;
+                }
+
+                thead {
+                    display: table-header-group;
+                }
+
+                table {
+                    border-collapse: collapse;
+                    border-spacing: 0px;
+                    width: 100%;
+                    overflow: auto;
+                    break-inside: auto;
+                    text-align: left;
+                }
+
+                    table.md-table td {
+                        min-width: 32px;
+                    }
+
+                .CodeMirror-gutters {
+                    border-right: 0px;
+                    background-color: inherit;
+                }
+
+                .CodeMirror-linenumber {
+                    user-select: none;
+                }
+
+                .CodeMirror {
+                    text-align: left;
+                }
+
+                .CodeMirror-placeholder {
+                    opacity: 0.3;
+                }
+
+                .CodeMirror pre {
+                    padding: 0px 4px;
+                }
+
+                .CodeMirror-lines {
+                    padding: 0px;
+                }
+
+                div.hr:focus {
+                    cursor: none;
+                }
+
+                #write pre {
+                    white-space: pre-wrap;
+                }
+
+                #write.fences-no-line-wrapping pre {
+                    white-space: pre;
+                }
+
+                #write pre.ty-contain-cm {
+                    white-space: normal;
+                }
+
+                .CodeMirror-gutters {
+                    margin-right: 4px;
+                }
+
+                .md-fences {
+                    font-size: 0.9rem;
+                    display: block;
+                    break-inside: avoid;
+                    text-align: left;
+                    overflow: visible;
+                    white-space: pre;
+                    background: inherit;
+                    position: relative !important;
+                }
+
+                .md-fences-adv-panel {
+                    width: 100%;
+                    margin-top: 10px;
+                    text-align: center;
+                    padding-top: 0px;
+                    padding-bottom: 8px;
+                    overflow-x: auto;
+                }
+
+                #write .md-fences.mock-cm {
+                    white-space: pre-wrap;
+                }
+
+                .md-fences.md-fences-with-lineno {
+                    padding-left: 0px;
+                }
+
+                #write.fences-no-line-wrapping .md-fences.mock-cm {
+                    white-space: pre;
+                    overflow-x: auto;
+                }
+
+                .md-fences.mock-cm.md-fences-with-lineno {
+                    padding-left: 8px;
+                }
+
+                .CodeMirror-line, twitterwidget {
+                    break-inside: avoid;
+                }
+
+                .footnotes {
+                    opacity: 0.8;
+                    font-size: 0.9rem;
+                    margin-top: 1em;
+                    margin-bottom: 1em;
+                }
+
+                    .footnotes + .footnotes {
+                        margin-top: 0px;
+                    }
+
+                .md-reset {
+                    margin: 0px;
+                    padding: 0px;
+                    border: 0px;
+                    outline: 0px;
+                    vertical-align: top;
+                    background: 0px 0px;
+                    text-decoration: none;
+                    text-shadow: none;
+                    float: none;
+                    position: static;
+                    width: auto;
+                    height: auto;
+                    white-space: nowrap;
+                    cursor: inherit;
+                    -webkit-tap-highlight-color: transparent;
+                    line-height: normal;
+                    font-weight: 400;
+                    text-align: left;
+                    box-sizing: content-box;
+                    direction: ltr;
+                }
+
+                li div {
+                    padding-top: 0px;
+                }
+
+                blockquote {
+                    margin: 1rem 0px;
+                }
+
+                li .mathjax-block, li p {
+                    margin: 0.5rem 0px;
+                }
+
+                li blockquote {
+                    margin: 1rem 0px;
+                }
+
+                li {
+                    margin: 0px;
+                    position: relative;
+                }
+
+                blockquote > :last-child {
+                    margin-bottom: 0px;
+                }
+
+                blockquote > :first-child, li > :first-child {
+                    margin-top: 0px;
+                }
+
+                .footnotes-area {
+                    color: rgb(136, 136, 136);
+                    margin-top: 0.714rem;
+                    padding-bottom: 0.143rem;
+                    white-space: normal;
+                }
+
+                #write .footnote-line {
+                    white-space: pre-wrap;
+                }
+
+                @media print {
+                    body, html {
+                        border: 1px solid transparent;
+                        height: 99%;
+                        break-after: avoid;
+                        break-before: avoid;
+                        font-variant-ligatures: no-common-ligatures;
+                    }
+
+                    #write {
+                        margin-top: 0px;
+                        padding-top: 0px;
+                        border-color: transparent !important;
+                    }
+
+                    .typora-export * {
+                        -webkit-print-color-adjust: exact;
+                    }
+
+                    .typora-export #write {
+                        break-after: avoid;
+                    }
+
+                        .typora-export #write::after {
+                            height: 0px;
+                        }
+
+                    .is-mac table {
+                        break-inside: avoid;
+                    }
+
+                    .typora-export-show-outline .typora-export-sidebar {
+                        display: none;
+                    }
+                }
+
+                .footnote-line {
+                    margin-top: 0.714em;
+                    font-size: 0.7em;
+                }
+
+                a img, img a {
+                    cursor: pointer;
+                }
+
+                pre.md-meta-block {
+                    font-size: 0.8rem;
+                    min-height: 0.8rem;
+                    white-space: pre-wrap;
+                    background: rgb(204, 204, 204);
+                    display: block;
+                    overflow-x: hidden;
+                }
+
+                p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+                    display: block;
+                    margin: auto;
+                }
+
+                #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+                    left: -2em;
+                    position: relative;
+                }
+
+                p > .md-image:only-child {
+                    display: inline-block;
+                    width: 100%;
+                }
+
+                #write .MathJax_Display {
+                    margin: 0.8em 0px 0px;
+                }
+
+                .md-math-block {
+                    width: 100%;
+                }
+
+                    .md-math-block:not(:empty)::after {
+                        display: none;
+                    }
+
+                .MathJax_ref {
+                    fill: currentcolor;
+                }
+
+                [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+                    outline: 0px;
+                    box-shadow: none;
+                }
+
+                .md-task-list-item {
+                    position: relative;
+                    list-style-type: none;
+                }
+
+                .task-list-item.md-task-list-item {
+                    padding-left: 0px;
+                }
+
+                .md-task-list-item > input {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    margin-left: -1.2em;
+                    margin-top: calc(1em - 10px);
+                    border: none;
+                }
+
+                .math {
+                    font-size: 1rem;
+                }
+
+                .md-toc {
+                    min-height: 3.58rem;
+                    position: relative;
+                    font-size: 0.9rem;
+                    border-radius: 10px;
+                }
+
+                .md-toc-content {
+                    position: relative;
+                    margin-left: 0px;
+                }
+
+                    .md-toc-content::after, .md-toc::after {
+                        display: none;
+                    }
+
+                .md-toc-item {
+                    display: block;
+                    color: rgb(65, 131, 196);
+                }
+
+                    .md-toc-item a {
+                        text-decoration: none;
+                    }
+
+                .md-toc-inner:hover {
+                    text-decoration: underline;
+                }
+
+                .md-toc-inner {
+                    display: inline-block;
+                    cursor: pointer;
+                }
+
+                .md-toc-h1 .md-toc-inner {
+                    margin-left: 0px;
+                    font-weight: 700;
+                }
+
+                .md-toc-h2 .md-toc-inner {
+                    margin-left: 2em;
+                }
+
+                .md-toc-h3 .md-toc-inner {
+                    margin-left: 4em;
+                }
+
+                .md-toc-h4 .md-toc-inner {
+                    margin-left: 6em;
+                }
+
+                .md-toc-h5 .md-toc-inner {
+                    margin-left: 8em;
+                }
+
+                .md-toc-h6 .md-toc-inner {
+                    margin-left: 10em;
+                }
+
+                @media screen and (max-width: 48em) {
+                    .md-toc-h3 .md-toc-inner {
+                        margin-left: 3.5em;
+                    }
+
+                    .md-toc-h4 .md-toc-inner {
+                        margin-left: 5em;
+                    }
+
+                    .md-toc-h5 .md-toc-inner {
+                        margin-left: 6.5em;
+                    }
+
+                    .md-toc-h6 .md-toc-inner {
+                        margin-left: 8em;
+                    }
+                }
+
+                a.md-toc-inner {
+                    font-size: inherit;
+                    font-style: inherit;
+                    font-weight: inherit;
+                    line-height: inherit;
+                }
+
+                .footnote-line a:not(.reversefootnote) {
+                    color: inherit;
+                }
+
+                .md-attr {
+                    display: none;
+                }
+
+                .md-fn-count::after {
+                    content: ".";
+                }
+
+                code, pre, samp, tt {
+                    font-family: var(--monospace);
+                }
+
+                kbd {
+                    margin: 0px 0.1em;
+                    padding: 0.1em 0.6em;
+                    font-size: 0.8em;
+                    color: rgb(36, 39, 41);
+                    background: rgb(255, 255, 255);
+                    border: 1px solid rgb(173, 179, 185);
+                    border-radius: 3px;
+                    box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+                    white-space: nowrap;
+                    vertical-align: middle;
+                }
+
+                .md-comment {
+                    color: rgb(162, 127, 3);
+                    opacity: 0.8;
+                    font-family: var(--monospace);
+                }
+
+                code {
+                    text-align: left;
+                    vertical-align: initial;
+                }
+
+                a.md-print-anchor {
+                    white-space: pre !important;
+                    border-width: initial !important;
+                    border-style: none !important;
+                    border-color: initial !important;
+                    display: inline-block !important;
+                    position: absolute !important;
+                    width: 1px !important;
+                    right: 0px !important;
+                    outline: 0px !important;
+                    background: 0px 0px !important;
+                    text-decoration: initial !important;
+                    text-shadow: initial !important;
+                }
+
+                .os-windows.monocolor-emoji .md-emoji {
+                    font-family: "Segoe UI Symbol", sans-serif;
+                }
+
+                .md-diagram-panel > svg {
+                    max-width: 100%;
+                }
+
+                [lang="flow"] svg, [lang="mermaid"] svg {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                [lang="mermaid"] .node text {
+                    font-size: 1rem;
+                }
+
+                table tr th {
+                    border-bottom: 0px;
+                }
+
+                video {
+                    max-width: 100%;
+                    display: block;
+                    margin: 0px auto;
+                }
+
+                iframe {
+                    max-width: 100%;
+                    width: 100%;
+                    border: none;
+                }
+
+                .highlight td, .highlight tr {
+                    border: 0px;
+                }
+
+                mark {
+                    background: rgb(255, 255, 0);
+                    color: rgb(0, 0, 0);
+                }
+
+                    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+                        color: inherit;
+                    }
+
+                .md-expand mark .md-meta {
+                    opacity: 0.3 !important;
+                }
+
+                mark .md-meta {
+                    color: rgb(0, 0, 0);
+                }
+
+                @media print {
+                    .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+                        break-inside: avoid;
+                    }
+                }
+
+                .md-diagram-panel .messageText {
+                    stroke: none !important;
+                }
+
+                .md-diagram-panel .start-state {
+                    fill: var(--node-fill);
+                }
+
+                .md-diagram-panel .edgeLabel rect {
+                    opacity: 1 !important;
+                }
+
+                .md-require-zoom-fix {
+                    height: auto;
+                    margin-top: 16px;
+                    margin-bottom: 16px;
+                }
+
+                    .md-require-zoom-fix foreignobject {
+                        font-size: var(--mermaid-font-zoom);
+                    }
+
+                .md-fences.md-fences-math {
+                    font-size: 1em;
+                }
+
+                .md-fences-advanced:not(.md-focus) {
+                    padding: 0px;
+                    white-space: nowrap;
+                    border: 0px;
+                }
+
+                .md-fences-advanced:not(.md-focus) {
+                    background: inherit;
+                }
+
+                .typora-export-show-outline .typora-export-content {
+                    max-width: 1440px;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                .typora-export-sidebar {
+                    width: 300px;
+                    font-size: 0.8rem;
+                    margin-top: 80px;
+                    margin-right: 18px;
+                }
+
+                .typora-export-show-outline #write {
+                    --webkit-flex: 2;
+                    flex: 2 1 0%;
+                }
+
+                .typora-export-sidebar .outline-content {
+                    position: fixed;
+                    top: 0px;
+                    max-height: 100%;
+                    overflow: hidden auto;
+                    padding-bottom: 30px;
+                    padding-top: 60px;
+                    width: 300px;
+                }
+
+                @media screen and (max-width: 1024px) {
+                    .typora-export-sidebar, .typora-export-sidebar .outline-content {
+                        width: 240px;
+                    }
+                }
+
+                @media screen and (max-width: 800px) {
+                    .typora-export-sidebar {
+                        display: none;
+                    }
+                }
+
+                .outline-content li, .outline-content ul {
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    list-style: none;
+                }
+
+                .outline-content ul {
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+
+                .outline-content strong {
+                    font-weight: 400;
+                }
+
+                .outline-expander {
+                    width: 1rem;
+                    height: 1.42857rem;
+                    position: relative;
+                    display: table-cell;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    padding-left: 4px;
+                }
+
+                    .outline-expander::before {
+                        content: "";
+                        position: relative;
+                        font-family: Ionicons;
+                        display: inline-block;
+                        font-size: 8px;
+                        vertical-align: middle;
+                    }
+
+                .outline-item {
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+                    cursor: pointer;
+                }
+
+                .outline-expander:hover::before {
+                    content: "";
+                }
+
+                .outline-h1 > .outline-item {
+                    padding-left: 0px;
+                }
+
+                .outline-h2 > .outline-item {
+                    padding-left: 1em;
+                }
+
+                .outline-h3 > .outline-item {
+                    padding-left: 2em;
+                }
+
+                .outline-h4 > .outline-item {
+                    padding-left: 3em;
+                }
+
+                .outline-h5 > .outline-item {
+                    padding-left: 4em;
+                }
+
+                .outline-h6 > .outline-item {
+                    padding-left: 5em;
+                }
+
+                .outline-label {
+                    cursor: pointer;
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                    .outline-label:hover {
+                        text-decoration: underline;
+                    }
+
+                .outline-item:hover {
+                    border-color: rgb(245, 245, 245);
+                    background-color: var(--item-hover-bg-color);
+                }
+
+                .outline-item:hover {
+                    margin-left: -28px;
+                    margin-right: -28px;
+                    border-left: 28px solid transparent;
+                    border-right: 28px solid transparent;
+                }
+
+                .outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+                    display: none;
+                }
+
+                .outline-item-open > .outline-item > .outline-expander::before {
+                    content: "";
+                }
+
+                .outline-children {
+                    display: none;
+                }
+
+                .info-panel-tab-wrapper {
+                    display: none;
+                }
+
+                .outline-item-open > .outline-children {
+                    display: block;
+                }
+
+                .typora-export .outline-item {
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                }
+
+                    .typora-export .outline-item:hover {
+                        margin-right: -8px;
+                        border-right: 8px solid transparent;
+                    }
+
+                .typora-export .outline-expander::before {
+                    content: "+";
+                    font-family: inherit;
+                    top: -1px;
+                }
+
+                .typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+                    content: "−";
+                }
+
+                .typora-export-collapse-outline .outline-children {
+                    display: none;
+                }
+
+                .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+                    display: block;
+                }
+
+                .typora-export-no-collapse-outline .outline-expander::before {
+                    content: "" !important;
+                }
+
+                .typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+                    font-weight: 700;
+                }
+
+                .md-inline-math-container mjx-container {
+                    zoom: 0.95;
+                }
+
+
+                .CodeMirror {
+                    height: auto;
+                }
+
+                    .CodeMirror.cm-s-inner {
+                        background: inherit;
+                    }
+
+                .CodeMirror-scroll {
+                    overflow: auto hidden;
+                    z-index: 3;
+                }
+
+                .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+                    background-color: rgb(255, 255, 255);
+                }
+
+                .CodeMirror-gutters {
+                    border-right: 1px solid rgb(221, 221, 221);
+                    background: inherit;
+                    white-space: nowrap;
+                }
+
+                .CodeMirror-linenumber {
+                    padding: 0px 3px 0px 5px;
+                    text-align: right;
+                    color: rgb(153, 153, 153);
+                }
+
+                .cm-s-inner .cm-keyword {
+                    color: rgb(119, 0, 136);
+                }
+
+                .cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+                    color: rgb(34, 17, 153);
+                }
+
+                .cm-s-inner .cm-number {
+                    color: rgb(17, 102, 68);
+                }
+
+                .cm-s-inner .cm-def {
+                    color: rgb(0, 0, 255);
+                }
+
+                .cm-s-inner .cm-variable {
+                    color: rgb(0, 0, 0);
+                }
+
+                .cm-s-inner .cm-variable-2 {
+                    color: rgb(0, 85, 170);
+                }
+
+                .cm-s-inner .cm-variable-3 {
+                    color: rgb(0, 136, 85);
+                }
+
+                .cm-s-inner .cm-string {
+                    color: rgb(170, 17, 17);
+                }
+
+                .cm-s-inner .cm-property {
+                    color: rgb(0, 0, 0);
+                }
+
+                .cm-s-inner .cm-operator {
+                    color: rgb(152, 26, 26);
+                }
+
+                .cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+                    color: rgb(170, 85, 0);
+                }
+
+                .cm-s-inner .cm-string-2 {
+                    color: rgb(255, 85, 0);
+                }
+
+                .cm-s-inner .cm-meta {
+                    color: rgb(85, 85, 85);
+                }
+
+                .cm-s-inner .cm-qualifier {
+                    color: rgb(85, 85, 85);
+                }
+
+                .cm-s-inner .cm-builtin {
+                    color: rgb(51, 0, 170);
+                }
+
+                .cm-s-inner .cm-bracket {
+                    color: rgb(153, 153, 119);
+                }
+
+                .cm-s-inner .cm-tag {
+                    color: rgb(17, 119, 0);
+                }
+
+                .cm-s-inner .cm-attribute {
+                    color: rgb(0, 0, 204);
+                }
+
+                .cm-s-inner .cm-header, .cm-s-inner.cm-header {
+                    color: rgb(0, 0, 255);
+                }
+
+                .cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
+                    color: rgb(0, 153, 0);
+                }
+
+                .cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
+                    color: rgb(153, 153, 153);
+                }
+
+                .cm-s-inner .cm-link, .cm-s-inner.cm-link {
+                    color: rgb(0, 0, 204);
+                }
+
+                .cm-negative {
+                    color: rgb(221, 68, 68);
+                }
+
+                .cm-positive {
+                    color: rgb(34, 153, 34);
+                }
+
+                .cm-header, .cm-strong {
+                    font-weight: 700;
+                }
+
+                .cm-del {
+                    text-decoration: line-through;
+                }
+
+                .cm-em {
+                    font-style: italic;
+                }
+
+                .cm-link {
+                    text-decoration: underline;
+                }
+
+                .cm-error {
+                    color: red;
+                }
+
+                .cm-invalidchar {
+                    color: red;
+                }
+
+                .cm-constant {
+                    color: rgb(38, 139, 210);
+                }
+
+                .cm-defined {
+                    color: rgb(181, 137, 0);
+                }
+
+                div.CodeMirror span.CodeMirror-matchingbracket {
+                    color: rgb(0, 255, 0);
+                }
+
+                div.CodeMirror span.CodeMirror-nonmatchingbracket {
+                    color: rgb(255, 34, 34);
+                }
+
+                .cm-s-inner .CodeMirror-activeline-background {
+                    background: inherit;
+                }
+
+                .CodeMirror {
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .CodeMirror-scroll {
+                    height: 100%;
+                    outline: 0px;
+                    position: relative;
+                    box-sizing: content-box;
+                    background: inherit;
+                }
+
+                .CodeMirror-sizer {
+                    position: relative;
+                }
+
+                .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+                    position: absolute;
+                    z-index: 6;
+                    display: none;
+                    outline: 0px;
+                }
+
+                .CodeMirror-vscrollbar {
+                    right: 0px;
+                    top: 0px;
+                    overflow: hidden;
+                }
+
+                .CodeMirror-hscrollbar {
+                    bottom: 0px;
+                    left: 0px;
+                    overflow: auto hidden;
+                }
+
+                .CodeMirror-scrollbar-filler {
+                    right: 0px;
+                    bottom: 0px;
+                }
+
+                .CodeMirror-gutter-filler {
+                    left: 0px;
+                    bottom: 0px;
+                }
+
+                .CodeMirror-gutters {
+                    position: absolute;
+                    left: 0px;
+                    top: 0px;
+                    padding-bottom: 10px;
+                    z-index: 3;
+                    overflow-y: hidden;
+                }
+
+                .CodeMirror-gutter {
+                    white-space: normal;
+                    height: 100%;
+                    box-sizing: content-box;
+                    padding-bottom: 30px;
+                    margin-bottom: -32px;
+                    display: inline-block;
+                }
+
+                .CodeMirror-gutter-wrapper {
+                    position: absolute;
+                    z-index: 4;
+                    background: 0px 0px !important;
+                    border: none !important;
+                }
+
+                .CodeMirror-gutter-background {
+                    position: absolute;
+                    top: 0px;
+                    bottom: 0px;
+                    z-index: 4;
+                }
+
+                .CodeMirror-gutter-elt {
+                    position: absolute;
+                    cursor: default;
+                    z-index: 4;
+                }
+
+                .CodeMirror-lines {
+                    cursor: text;
+                }
+
+                .CodeMirror pre {
+                    border-radius: 0px;
+                    border-width: 0px;
+                    background: 0px 0px;
+                    font-family: inherit;
+                    font-size: inherit;
+                    margin: 0px;
+                    white-space: pre;
+                    overflow-wrap: normal;
+                    color: inherit;
+                    z-index: 2;
+                    position: relative;
+                    overflow: visible;
+                }
+
+                .CodeMirror-wrap pre {
+                    overflow-wrap: break-word;
+                    white-space: pre-wrap;
+                    word-break: normal;
+                }
+
+                .CodeMirror-code pre {
+                    border-right: 30px solid transparent;
+                    width: fit-content;
+                }
+
+                .CodeMirror-wrap .CodeMirror-code pre {
+                    border-right: none;
+                    width: auto;
+                }
+
+                .CodeMirror-linebackground {
+                    position: absolute;
+                    inset: 0px;
+                    z-index: 0;
+                }
+
+                .CodeMirror-linewidget {
+                    position: relative;
+                    z-index: 2;
+                    overflow: auto;
+                }
+
+                .CodeMirror-wrap .CodeMirror-scroll {
+                    overflow-x: hidden;
+                }
+
+                .CodeMirror-measure {
+                    position: absolute;
+                    width: 100%;
+                    height: 0px;
+                    overflow: hidden;
+                    visibility: hidden;
+                }
+
+                    .CodeMirror-measure pre {
+                        position: static;
+                    }
+
+                .CodeMirror div.CodeMirror-cursor {
+                    position: absolute;
+                    visibility: hidden;
+                    border-right: none;
+                    width: 0px;
+                }
+
+                .CodeMirror div.CodeMirror-cursor {
+                    visibility: hidden;
+                }
+
+                .CodeMirror-focused div.CodeMirror-cursor {
+                    visibility: inherit;
+                }
+
+                .cm-searching {
+                    background: rgba(255, 255, 0, 0.4);
+                }
+
+                span.cm-underlined {
+                    text-decoration: underline;
+                }
+
+                span.cm-strikethrough {
+                    text-decoration: line-through;
+                }
+
+                .cm-tw-syntaxerror {
+                    color: rgb(255, 255, 255);
+                    background-color: rgb(153, 0, 0);
+                }
+
+                .cm-tw-deleted {
+                    text-decoration: line-through;
+                }
+
+                .cm-tw-header5 {
+                    font-weight: 700;
+                }
+
+                .cm-tw-listitem:first-child {
+                    padding-left: 10px;
+                }
+
+                .cm-tw-box {
+                    border-style: solid;
+                    border-right-width: 1px;
+                    border-bottom-width: 1px;
+                    border-left-width: 1px;
+                    border-color: inherit;
+                    border-top-width: 0px !important;
+                }
+
+                .cm-tw-underline {
+                    text-decoration: underline;
+                }
+
+                @media print {
+                    .CodeMirror div.CodeMirror-cursor {
+                        visibility: hidden;
+                    }
+                }
+
+
+                :root {
+                    --side-bar-bg-color: #fafafa;
+                    --control-text-color: #777;
+                }
+
+                @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+                /* open-sans-regular - latin-ext_latin */
+                /* open-sans-italic - latin-ext_latin */
+                /* open-sans-700 - latin-ext_latin */
+                /* open-sans-700italic - latin-ext_latin */
+                html {
+                    font-size: 16px;
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                body {
+                    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+                    color: rgb(51, 51, 51);
+                    line-height: 1.6;
+                }
+
+                #write {
+                    max-width: 860px;
+                    margin: 0 auto;
+                    padding: 30px;
+                    padding-bottom: 100px;
+                }
+
+                @media only screen and (min-width: 1400px) {
+                    #write {
+                        max-width: 1024px;
+                    }
+                }
+
+                @media only screen and (min-width: 1800px) {
+                    #write {
+                        max-width: 1200px;
+                    }
+                }
+
+                #write > ul:first-child,
+                #write > ol:first-child {
+                    margin-top: 30px;
+                }
+
+                a {
+                    color: #4183C4;
+                }
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    position: relative;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                    line-height: 1.4;
+                    cursor: text;
+                }
+
+                    h1:hover a.anchor,
+                    h2:hover a.anchor,
+                    h3:hover a.anchor,
+                    h4:hover a.anchor,
+                    h5:hover a.anchor,
+                    h6:hover a.anchor {
+                        text-decoration: none;
+                    }
+
+                    h1 tt,
+                    h1 code {
+                        font-size: inherit;
+                    }
+
+                    h2 tt,
+                    h2 code {
+                        font-size: inherit;
+                    }
+
+                    h3 tt,
+                    h3 code {
+                        font-size: inherit;
+                    }
+
+                    h4 tt,
+                    h4 code {
+                        font-size: inherit;
+                    }
+
+                    h5 tt,
+                    h5 code {
+                        font-size: inherit;
+                    }
+
+                    h6 tt,
+                    h6 code {
+                        font-size: inherit;
+                    }
+
+                h1 {
+                    font-size: 2.25em;
+                    line-height: 1.2;
+                    border-bottom: 1px solid #eee;
+                }
+
+                h2 {
+                    font-size: 1.75em;
+                    line-height: 1.225;
+                    border-bottom: 1px solid #eee;
+                }
+
+                /*@media print {
+            .typora-export h1,
+            .typora-export h2 {
+                border-bottom: none;
+                padding-bottom: initial;
+            }
+
+            .typora-export h1::after,
+            .typora-export h2::after {
+                content: "";
+                display: block;
+                height: 100px;
+                margin-top: -96px;
+                border-top: 1px solid #eee;
+            }
+        }*/
+
+                h3 {
+                    font-size: 1.5em;
+                    line-height: 1.43;
+                }
+
+                h4 {
+                    font-size: 1.25em;
+                }
+
+                h5 {
+                    font-size: 1em;
+                }
+
+                h6 {
+                    font-size: 1em;
+                    color: #777;
+                }
+
+                p,
+                blockquote,
+                ul,
+                ol,
+                dl,
+                table {
+                    margin: 0.8em 0;
+                }
+
+                li > ol,
+                li > ul {
+                    margin: 0 0;
+                }
+
+                hr {
+                    height: 2px;
+                    padding: 0;
+                    margin: 16px 0;
+                    background-color: #e7e7e7;
+                    border: 0 none;
+                    overflow: hidden;
+                    box-sizing: content-box;
+                }
+
+                li p.first {
+                    display: inline-block;
+                }
+
+                ul,
+                ol {
+                    padding-left: 30px;
+                }
+
+                    ul:first-child,
+                    ol:first-child {
+                        margin-top: 0;
+                    }
+
+                    ul:last-child,
+                    ol:last-child {
+                        margin-bottom: 0;
+                    }
+
+                blockquote {
+                    border-left: 4px solid #dfe2e5;
+                    padding: 0 15px;
+                    color: #777777;
+                }
+
+                    blockquote blockquote {
+                        padding-right: 0;
+                    }
+
+                table {
+                    padding: 0;
+                    word-break: initial;
+                }
+
+                    table tr {
+                        border: 1px solid #dfe2e5;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                        table tr:nth-child(2n),
+                        thead {
+                            background-color: #f8f8f8;
+                        }
+
+                    table th {
+                        font-weight: bold;
+                        border: 1px solid #dfe2e5;
+                        border-bottom: 0;
+                        margin: 0;
+                        padding: 6px 13px;
+                    }
+
+                    table td {
+                        border: 1px solid #dfe2e5;
+                        margin: 0;
+                        padding: 6px 13px;
+                    }
+
+                        table th:first-child,
+                        table td:first-child {
+                            margin-top: 0;
+                        }
+
+                        table th:last-child,
+                        table td:last-child {
+                            margin-bottom: 0;
+                        }
+
+                .CodeMirror-lines {
+                    padding-left: 4px;
+                }
+
+                .code-tooltip {
+                    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+                    border-top: 1px solid #eef2f2;
+                }
+
+                .md-fences,
+                code,
+                tt {
+                    border: 1px solid #e7eaed;
+                    background-color: #f8f8f8;
+                    border-radius: 3px;
+                    padding: 0;
+                    padding: 2px 4px 0px 4px;
+                    font-size: 0.9em;
+                }
+
+                code {
+                    background-color: #f3f4f4;
+                    padding: 0 2px 0 2px;
+                }
+
+                .md-fences {
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    padding-top: 8px;
+                    padding-bottom: 6px;
+                }
+
+
+                .md-task-list-item > input {
+                    margin-left: -1.3em;
+                }
+
+                @media print {
+                    html {
+                        font-size: 13px;
+                    }
+
+                    table,
+                    pre {
+                        page-break-inside: avoid;
+                    }
+
+                    pre {
+                        word-wrap: break-word;
+                    }
+                }
+
+                .md-fences {
+                    background-color: #f8f8f8;
+                }
+
+                #write pre.md-meta-block {
+                    padding: 1rem;
+                    font-size: 85%;
+                    line-height: 1.45;
+                    background-color: #f7f7f7;
+                    border: 0;
+                    border-radius: 3px;
+                    color: #777777;
+                    margin-top: 0 !important;
+                }
+
+                .mathjax-block > .code-tooltip {
+                    bottom: .375rem;
+                }
+
+                .md-mathjax-midline {
+                    background: #fafafa;
+                }
+
+                #write > h3.md-focus:before {
+                    left: -1.5625rem;
+                    top: .375rem;
+                }
+
+                #write > h4.md-focus:before {
+                    left: -1.5625rem;
+                    top: .285714286rem;
+                }
+
+                #write > h5.md-focus:before {
+                    left: -1.5625rem;
+                    top: .285714286rem;
+                }
+
+                #write > h6.md-focus:before {
+                    left: -1.5625rem;
+                    top: .285714286rem;
+                }
+
+                .md-image > .md-meta {
+                    /*border: 1px solid #ddd;*/
+                    border-radius: 3px;
+                    padding: 2px 0px 0px 4px;
+                    font-size: 0.9em;
+                    color: inherit;
+                }
+
+                .md-tag {
+                    color: #a7a7a7;
+                    opacity: 1;
+                }
+
+                .md-toc {
+                    margin-top: 20px;
+                    padding-bottom: 20px;
+                }
+
+                .sidebar-tabs {
+                    border-bottom: none;
+                }
+
+                #typora-quick-open {
+                    border: 1px solid #ddd;
+                    background-color: #f8f8f8;
+                }
+
+                #typora-quick-open-item {
+                    background-color: #FAFAFA;
+                    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+                    border-style: solid;
+                    border-width: 1px;
+                }
+
+                /** focus mode */
+                .on-focus-mode blockquote {
+                    border-left-color: rgba(85, 85, 85, 0.12);
+                }
+
+                header, .context-menu, .megamenu-content, footer {
+                    font-family: "Segoe UI", "Arial", sans-serif;
+                }
+
+                .file-node-content:hover .file-node-icon,
+                .file-node-content:hover .file-node-open-state {
+                    visibility: visible;
+                }
+
+                .mac-seamless-mode #typora-sidebar {
+                    background-color: #fafafa;
+                    background-color: var(--side-bar-bg-color);
+                }
+
+                .md-lang {
+                    color: #b4654d;
+                }
+
+                /*.html-for-mac {
+            --item-hover-bg-color: #E6F0FE;
+        }*/
+
+                #md-notification .btn {
+                    border: 0;
+                }
+
+                .dropdown-menu .divider {
+                    border-color: #e5e5e5;
+                    opacity: 0.4;
+                }
+
+                .ty-preferences .window-content {
+                    background-color: #fafafa;
+                }
+
+                .ty-preferences .nav-group-item.active {
+                    color: white;
+                    background: #999;
+                }
+
+                .menu-item-container a.menu-style-btn {
+                    background-color: #f5f8fa;
+                    background-image: linear-gradient( 180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+                }
+
+
+
+                mjx-container[jax="SVG"] {
+                    direction: ltr;
+                }
+
+                    mjx-container[jax="SVG"] > svg {
+                        overflow: visible;
+                        min-height: 1px;
+                        min-width: 1px;
+                    }
+
+                        mjx-container[jax="SVG"] > svg a {
+                            fill: blue;
+                            stroke: blue;
+                        }
+
+                mjx-assistive-mml {
+                    position: absolute !important;
+                    top: 0px;
+                    left: 0px;
+                    clip: rect(1px, 1px, 1px, 1px);
+                    padding: 1px 0px 0px 0px !important;
+                    border: 0px !important;
+                    display: block !important;
+                    width: auto !important;
+                    overflow: hidden !important;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+
+                    mjx-assistive-mml[display="block"] {
+                        width: 100% !important;
+                    }
+
+                mjx-container[jax="SVG"][display="true"] {
+                    display: block;
+                    text-align: center;
+                    margin: 1em 0;
+                }
+
+                    mjx-container[jax="SVG"][display="true"][width="full"] {
+                        display: flex;
+                    }
+
+                mjx-container[jax="SVG"][justify="left"] {
+                    text-align: left;
+                }
+
+                mjx-container[jax="SVG"][justify="right"] {
+                    text-align: right;
+                }
+
+                g[data-mml-node="merror"] > g {
+                    fill: red;
+                    stroke: red;
+                }
+
+                g[data-mml-node="merror"] > rect[data-background] {
+                    fill: yellow;
+                    stroke: none;
+                }
+
+                g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+                    stroke-width: 70px;
+                    fill: none;
+                }
+
+                g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+                    stroke-width: 70px;
+                    fill: none;
+                }
+
+                g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+                    stroke-dasharray: 140;
+                }
+
+                g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+                    stroke-linecap: round;
+                    stroke-dasharray: 0,140;
+                }
+
+                g[data-mml-node="mtable"] > g > svg {
+                    overflow: visible;
+                }
+
+                [jax="SVG"] mjx-tool {
+                    display: inline-block;
+                    position: relative;
+                    width: 0;
+                    height: 0;
+                }
+
+                    [jax="SVG"] mjx-tool > mjx-tip {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+
+                mjx-tool > mjx-tip {
+                    display: inline-block;
+                    padding: .2em;
+                    border: 1px solid #888;
+                    font-size: 70%;
+                    background-color: #F8F8F8;
+                    color: black;
+                    box-shadow: 2px 2px 5px #AAAAAA;
+                }
+
+                g[data-mml-node="maction"][data-toggle] {
+                    cursor: pointer;
+                }
+
+                mjx-status {
+                    display: block;
+                    position: fixed;
+                    left: 1em;
+                    bottom: 1em;
+                    min-width: 25%;
+                    padding: .2em .4em;
+                    border: 1px solid #888;
+                    font-size: 90%;
+                    background-color: #F8F8F8;
+                    color: black;
+                }
+
+                foreignObject[data-mjx-xml] {
+                    font-family: initial;
+                    line-height: normal;
+                    overflow: visible;
+                }
+
+                mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+                    stroke-width: 3;
+                }
+
+                g[data-mml-node="xypic"] path {
+                    stroke-width: inherit;
+                }
+
+                .MathJax g[data-mml-node="xypic"] path {
+                    stroke-width: inherit;
+                }
+    </style>
+    <title>ANSYS 中整体刚度矩阵的输出（二）：HBMAT命令</title>
+</head>
+<body class='typora-export os-windows'>
+    <div class='typora-export-content'>
+        <div id='write' class=''>
+            <h1 id='ansys-中整体刚度矩阵的输出二）hbmat命令'><span>ANSYS 中整体刚度矩阵的输出（二）：HBMAT命令</span></h1><p><span>前次介绍了ANSYS整体刚度矩阵输出的子结构分析方法，本文则介绍另外一种方法：HBMAT命令。“HB”指的是输出的矩阵以 </span><strong><span>Harwell-Boeing format</span></strong><span>进行存储，因此本文将着重介绍这种稀疏矩阵的存储格式。</span></p><p><span>要导出整体刚度矩阵，第一步当然是建立有限元模型：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">FINISH</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/CLEAR</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/FILNAME,'Model_1'</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/PREP7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!ELEMENT TYPE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ET,1,BEAM3</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">! ......</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 161px;"></div><div class="CodeMirror-gutters" style="display: none; height: 161px;"></div></div></div></pre><p><span>具体模型的定义略去不表，值得注意的只有一点：文件名的定义。第三行</span><code>/FILNAME, &#39;Model_1&#39;</code><span>指定当前模型文件的存储以“Model_1”为名。文件名本身自是随意指定，后文中用到时保持一致即可。</span></p><p><span>事实上，</span><code>HBMAT</code><span>命令的作用是从ANSYS已生成的二进制文件中提取所关心的矩阵，并以Harwell-Boeing格式进行输出。模型的二进制文件后缀一般为“.full”，由于前面定义模型名称为“Model_1”，故完整的文件名称为“Model_1.full”。该二进制文件一般在求解步中生成，故在提取整体刚度矩阵前应当执行某一类型的分析。根据Help文档提示，不同的分析步与求解算法将生成不同的二进制模型文件。一般情况下，模态分析和屈曲分析可以生成较为合适的二进制文件。需要特别指出，</span><strong><span>并行计算和瞬态分析生成二进制文件中并不包含所求的整体刚度矩阵</span></strong><span>。因此，这里采用模态分析：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!MODAL ANALYSIS</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/SOLU</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/OUTPUT, 'Modal_res',dat</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ANTYPE, MODAL</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">MODOPT, LANB, 20</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">MXPAND, 20, , ,NO</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">SOLVE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">FINISH</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 184px;"></div><div class="CodeMirror-gutters" style="display: none; height: 184px;"></div></div></div></pre><p><span>第2行</span><code>/SOLU</code><span>进入求解器，第三行</span><code>/OUTPUT, ‘Modal_res’, dat</code><span>指定输出文件名为“Modal_res.dat”。第四行</span><code>ANTYPE, MODAL</code><span>指定分析类型为模态分析，也可替换为</span><code>ANTYPE, 2</code><span>。第五行</span><code>MODOPT, LANB, 20</code><span>说明采用Block Lanczos方法（即默认方法），提取前20阶模态。第六行</span><code>MXPAND, 20, , , NO</code><span>意为将20阶模态信息写入结果文件。第七行</span><code>SOLVE</code><span>进行模态分析，最后</span><code>FINISH</code><span>结束模态分析。计算和输出的模态数量可保持一致，取值自可根据模型而定。这里需要注意的是，</span><strong><span>模态分析方法需采用Block Lanczos方法，这样可以生成具有完整信息的二进制模型文件</span></strong><span>。模态分析完成后，可在当前工作路径下找到名为“Modal_res.dat”的模态分析结果文件和名为“Model_1.full”的模型二进制文件。</span></p><p><span>接下来可采用</span><code>HBMAT</code><span>命令从“Model_1.full”中提取整体刚度矩阵：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">!EXPORT STIFFNESS MATRIX USING HBMAT COMMAND</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/AUX2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">FILE,'Model_1',full</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">HBMAT, 'Stiffness_mat', dat, , ASCII, STIFF, YES, YES</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">HBMAT, 'Mass_mat', dat, ,ASCII, MASS, YES, YES</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">FINISH</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p><span>第二行</span><code>/AUX2</code><span>进入二进制文件转储求解器。第三行</span><code>FILE, &#39;Model_1&#39;, full</code><span>指定要打开的二进制文件为“Model_1.full”。前已述及，二进制文件后缀为“.full”不可改变，而文件名“Model_1”需与</span><code>/FILNAME</code><span>命令指定的文件命保持一致。第四行</span><code>HBMAT, &#39;Stiffness_mat&#39;, dat, , ASCII, STIFF, YES, YES</code><span>用于提取结构整体刚度矩阵，以Harwell-Boeing格式存储至“Stiffness_mat.dat”。“ASCII”说明输出文件为采用ASCII编码的文本文档，“STIFF”指定输出刚度矩阵，第一个“YES”意为输出右端项（荷载向量），第二个“YES”意为同时输出自由度编号的映射关系，文件名也为“Stiffness_mat”，而后缀默认为“.mapping”，文件同样采用ASCII编码。由于给定了编码格式为ASCII，文件的后缀可任意给定，并不会影响文件内容。第五行意义与第四行相似，“MASS”用于指定提取结构整体质量矩阵，并存储至“Mass_mat.dat”。最后</span><code>FINISH</code><span>结束二进制文件转储求解。</span></p><p><span>至此，当前工作路径中已经生成名为“Stiffness_mat.dat”和“Mass_mat.dat”的文件，其中分别以Harwell-Boeing格式存储结构整体刚度矩阵和整体质量矩阵。此外还有名为“Stiffness_mat.mapping”和“Mass_mat.mapping”文件，其中存储的是自由度顺序映射关系。不难理解，“Stiffness_mat.mapping”与“Mass_mat.mapping”两个文件的内容是完全相同的。为了降低矩阵的带宽，ANSYS会对自由度的顺序进行优化，此映射关系即为优化之后的自由度排序。值得注意的是，</span><code>HBMAT</code><span>命令提取得到的矩阵是</span><strong><span>带宽优化后的矩阵</span></strong><span>。完成整体刚度矩阵和质量矩阵的读取后，按照此映射关系可将其还原为带宽优化之前的刚度与质量矩阵。此外，</span><strong><span>被约束的自由度已从矩阵中消除</span></strong><span>，因此最终读取得到的矩阵为非奇异矩阵。</span></p><p><span>下面以刚度矩阵为例，解释Harwell-Boeing格式中数据的存储方式（以省略号略去部分内容）：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Stiffness matrix from ANSYS FULL file dumped into Harwell-Boeing format &nbsp; &nbsp; &nbsp; &nbsp; </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  7857 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 541 &nbsp; &nbsp; &nbsp; &nbsp;  3388 &nbsp; &nbsp; &nbsp; &nbsp;  3388 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RSA &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  540 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540 &nbsp; &nbsp; &nbsp; &nbsp;  3388 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(I14) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (I14) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (d25.15) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  (d25.15) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">F &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  14</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  19</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  !......</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  3383</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  3386</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  3388</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  3389</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  19</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  21</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  22</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  23</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;  !......</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 539</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 540</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  0.188713846913580D+10</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; -0.889000000000000D+09</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; -0.439012345679012D+08</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; -0.100358222222222D+09</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>!......</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>0.145988616666667D+10</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; -0.564515000000000D+08</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  0.535310757333333D+09</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  0.000000000000000D+00</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  0.000000000000000D+00</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  !......</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 897px;"></div><div class="CodeMirror-gutters" style="display: none; height: 897px;"></div></div></div></pre><p><span>首先，</span><strong><span>第一行</span></strong><span>为文件内容的说明，指出该文件为ANSYS二进制文件导出的刚度矩阵，存储格式为Harwell-Boeing format。</span></p><p><strong><span>第二行</span></strong><span>包含五个整数：第一个“7857”说明文件中具有7857个数据行，考虑到5行说明性内容（1~5行），文件总行数为7862；第二个数字“541”说明数据的前541行（文件的6~546行，上面示例的6~14行）给定矩阵非零元素（对角线元素）的</span><strong><span>列索引指针</span></strong><span>（注意不是列索引），该数字等于自由度数加1；第三个整数“3388”指出文件中接下来的3388行（文件的547~3934行，上面示例的15~28行）给定非零元素的行索引；第四个整数“3388”指出文件接下来的3388行（文件中的3935~7322行，上面示例的29~36行）给出矩阵非零元素。可以看到，矩阵非零元素以FORTRAN语言科学计数法的D格式表示，与一般科学计数法的E格式略有不同。不难理解，矩阵非零元素行索引数量等于非零元素数量。最后一个整数“540”说明文件的最后540行（文件的7323~7862行，上面示例的37~39行）给出右端项（荷载）取值。从方程组的角度考虑，可知矩阵的实际大小为540</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewBox="0 -491 778 482" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0.02ex;"><defs><path id="MJX-5-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="D7" xlink:href="#MJX-5-TEX-N-D7"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>×</mo></math></mjx-assistive-mml></mjx-container>
+            <script type="math/tex">\times</script><span>​​540，即非约束自由度的数量为540。</span></p><p><strong><span>第三行</span></strong><span>的“RSA”说明文件中存贮的矩阵为已组装的（A）实（R）对称（S）矩阵。随后的两个“540”分别表示矩阵的行数和列数，这与第二行中的右端项的数量一致。接下来的数字“3388”表示矩阵中非零元素数量，其取值与第二行表明非零元素行索引和非零元素位置的两个“3388”一致。对于整体刚度/质量矩阵，第三行最后一个数字为0。</span></p><p><strong><span>第四行</span></strong><span>给出文件中的数据格式：行列索引均为“I14”，而矩阵元素和右端项元素为“d25.15”。</span></p><p><strong><span>第五行</span></strong><span>说明文件中包含右端项（荷载向量），列索引数量为1，行索引数量为540，即右端项维数为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.291ex" height="1.581ex" role="img" focusable="false" viewBox="0 -677 3222.4 699" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-6-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-6-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-6-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-6-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-6-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="35" xlink:href="#MJX-6-TEX-N-35"></use><use data-c="34" xlink:href="#MJX-6-TEX-N-34" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-6-TEX-N-30" transform="translate(1000,0)"></use></g><g data-mml-node="mo" transform="translate(1722.2,0)"><use data-c="D7" xlink:href="#MJX-6-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(2722.4,0)"><use data-c="31" xlink:href="#MJX-6-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>540</mn><mo>×</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container>
+            <script type="math/tex">540\times1</script><span>​。</span></p><p><strong><span>对于对称矩阵，Harwell-Boeing格式仅保存矩阵下三角元素，因此在完成数据读取后可根据对称关系补全上三角元素</span></strong><span>。由于Harwell-Boeing格式按列存储矩阵元素，故每列的第一个元素实际上为该列对应的矩阵对角线元素。矩阵非零元素的列索引需要根据这一规则和列索引指针来确定，下面结合上面的示例加以说明。</span></p><p><span>示例中给出矩阵非零元素列索引指针的前四项为1，7，14和19。这表明，矩阵非零元素的行索引中的第1~6个元素对应第一列，第7~13个元素对应第二列，第14~18个元素，依次类推。因此，可以得到前九个矩阵非零元素的在矩阵中的位置分别为(1,1)、(4,1)、(19,1)、(21,1)、(22,1)、(23,1)、(2,2)、(3,2)和(5,2)。最终，可确定每个非零元素在矩阵的位置。</span></p><p><span>了解了Harwell-Boeing格式的构成，即可编制程序读取文件内容，以得到带宽优化后的结构整体刚度矩阵和整体质量矩阵。</span></p><p><span>最后解释“Stiffness_mat.mapping”文件中存储的自由度顺序映射关系：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  Matrix Eqn &nbsp; &nbsp; &nbsp; &nbsp;  Node &nbsp;  DOF &nbsp; &nbsp; </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp;  UX &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp;  UY &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp;  ROTZ</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  33 &nbsp;  UX &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  33 &nbsp;  UY &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 6 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  33 &nbsp;  ROTZ</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  64 &nbsp;  UX </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; !......</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>文件第一行给出每列的意义：第一列为方程编号，即带宽优化后矩阵的行/列编号；第二列和第三列分别指定与矩阵某一行/列对应的节点编号和自由度标签。根据节点编号和自由度标签，可以计算出该自由度在优化前的矩阵中的行/列号。例如上述实例中的第四行对应节点33的第一个自由度，因此其在优化前的编号应为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="20.993ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 9278.9 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-7-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-7-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-7-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-7-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-7-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-7-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-7-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-7-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-7-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-7-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(389,0)"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use><use data-c="33" xlink:href="#MJX-7-TEX-N-33" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(1611.2,0)"><use data-c="2212" xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2611.4,0)"><use data-c="31" xlink:href="#MJX-7-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(3111.4,0)"><use data-c="29" xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(3722.7,0)"><use data-c="D7" xlink:href="#MJX-7-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(4722.9,0)"><use data-c="33" xlink:href="#MJX-7-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(5445.1,0)"><use data-c="2B" xlink:href="#MJX-7-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(6445.3,0)"><use data-c="31" xlink:href="#MJX-7-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(7223.1,0)"><use data-c="3D" xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(8278.9,0)"><use data-c="39" xlink:href="#MJX-7-TEX-N-39"></use><use data-c="37" xlink:href="#MJX-7-TEX-N-37" transform="translate(500,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mn>33</mn><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mn>3</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>97</mn></math></mjx-assistive-mml></mjx-container>
+            <script type="math/tex">(33-1)\times3+1=97</script><span>​，又由于节点1和节点32的三个自由度均被约束，因此不出现在矩阵中，故该自由度在优化前的排序为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.707ex" height="1.715ex" role="img" focusable="false" viewBox="0 -676 6500.4 758" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-8-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-8-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-8-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-8-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-8-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-8-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="39" xlink:href="#MJX-8-TEX-N-39"></use><use data-c="37" xlink:href="#MJX-8-TEX-N-37" transform="translate(500,0)"></use></g><g data-mml-node="mo" transform="translate(1222.2,0)"><use data-c="2212" xlink:href="#MJX-8-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(2222.4,0)"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(2944.7,0)"><use data-c="2217" xlink:href="#MJX-8-TEX-N-2217"></use></g><g data-mml-node="mn" transform="translate(3666.9,0)"><use data-c="33" xlink:href="#MJX-8-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(4444.7,0)"><use data-c="3D" xlink:href="#MJX-8-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(5500.4,0)"><use data-c="39" xlink:href="#MJX-8-TEX-N-39"></use><use data-c="31" xlink:href="#MJX-8-TEX-N-31" transform="translate(500,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>97</mn><mo>−</mo><mn>2</mn><mo>∗</mo><mn>3</mn><mo>=</mo><mn>91</mn></math></mjx-assistive-mml></mjx-container>
+            <script type="math/tex">97-2*3=91</script><span>​​​。而根据第四行第一个元素可知，该自由度在优化后的排序为4。​​依次类推，最终可得优化前后自由度的编号映射关系。根据该关系即可将带宽优化后的矩阵还原为带宽优化前的矩阵。可以验证，这里得到的映射关系与采用子结构分析提取整体刚度矩阵得到的映射关系是一致的。</span></p><p><span>程序实现的细节不多做讨论，最后给出两个MATLAB函数，分别用于读取带宽优化后的矩阵以及将优化后的矩阵还原为优化前的矩阵：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">function</span> [<span class="cm-variable">matrix</span>, <span class="cm-variable">right_term</span>] = <span class="cm-variable">readhbmat</span>(<span class="cm-variable">file_name</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% This function read matrix exported with Ansys 'HBMAT' command (Stiffness/mass/damping matrix </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% &nbsp; &nbsp; &nbsp; in Harwell-Boeing format) into MATLAB sparse matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% !The order of DOF is optimized by the Ansys, so the order of the DOF may be different from</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% &nbsp; !the origin order by the node number &nbsp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% Code by Yang, Jiashu</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% 2021-08-06, at Insititute for Risk and Reliability, Leibniz University Hannover</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% Email: jiashuyang@tongji.edu.cn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">readapproach</span> = <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%open file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">hbmat_id</span> = <span class="cm-variable">fopen</span>(<span class="cm-variable">file_name</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%read the head of the exported file from Ansys</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the first line: matrix name</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-operator">~</span>] = <span class="cm-variable">fgetl</span>(<span class="cm-variable">hbmat_id</span>); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the second line</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">x2</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%d'</span>, <span class="cm-number">5</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the number of rows in the file (except the head lines (5))</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% total_row_num = x2(1);</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of column indexes, equals to the size of the matrix plus one</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_col_ind</span> &nbsp; = <span class="cm-variable">x2</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of row indexes, equals to the number of nonzero elements in the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_row_ind</span> &nbsp; = <span class="cm-variable">x2</span>(<span class="cm-number">3</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of nonzero elements in the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_val</span> &nbsp; &nbsp; &nbsp; = <span class="cm-variable">x2</span>(<span class="cm-number">4</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of the right term (load vector), and therefore, equals to the number of row/column of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">num_right_term</span> = <span class="cm-variable">x2</span>(<span class="cm-number">5</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the third line</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%type of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">mattype</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%s'</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%{</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  The type of the matrix is identified by three characters:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  The first character may be 'R', 'C', or 'P', where</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'R' stands for 'real-value matrix', 'C' means 'complex-value matrix',</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  and 'P' means no matrix elements are included.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  The second character may be 'S', 'U', 'H', 'Z', 'R', where 'S' implies 'symmetric matrix',</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'U' means 'asymmetric matrix', 'H' indicates 'Hermitian matrix', 'Z' stands for </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'ill-conditioned matrix', and 'R' means 'band matrix'.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  The third character may be 'A' or 'E', where 'A' implies 'assembled matrix' and 'E' means </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'element matrix'.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp; &nbsp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  Usually, for global stiffness/mass/damping matrix, the type is 'RSA'.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp; &nbsp; &nbsp;  For symmetric matrix, the Harwell-Boeing format only record the lower triangular elements of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"> &nbsp;  %}</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">strcmpi</span>(<span class="cm-variable">mattype</span>(<span class="cm-number">1</span>), <span class="cm-string">'C'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">warning</span>(<span class="cm-string">'The matrix contains complex-value element!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-operator">~</span><span class="cm-variable">strcmpi</span>(<span class="cm-variable">mattype</span>(<span class="cm-number">2</span>), <span class="cm-string">'S'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">warning</span>(<span class="cm-string">'The matrix may be asymmetric!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">strcmpi</span>(<span class="cm-variable">mattype</span>(<span class="cm-number">3</span>), <span class="cm-string">'E'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">warning</span>(<span class="cm-string">'Element matrix rather than global matrix are exported'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">x</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%d'</span>, <span class="cm-number">4</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of row of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">nrow</span> &nbsp; = <span class="cm-variable">x</span>(<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of column of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">ncol</span> &nbsp; = <span class="cm-variable">x</span>(<span class="cm-number">2</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">nrow</span> <span class="cm-operator">~</span>= <span class="cm-variable">ncol</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">warning</span>(<span class="cm-string">'The matrix is not a square matrix!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of non-zero element in the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">nnzero</span> = <span class="cm-variable">x</span>(<span class="cm-number">3</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%number of entries of elements, zero for gloabl matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%neltvl = x(4);</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-operator">~</span>] = <span class="cm-variable">fgetl</span> (<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the fourth line: format of values</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-operator">~</span>] = <span class="cm-variable">fgetl</span> (<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the fifth line: information about right-hand term (load vector)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">num_right_term</span> <span class="cm-operator">~</span>= <span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  [<span class="cm-operator">~</span>] = <span class="cm-variable">fgetl</span> (<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%read the indexes of the values</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%index of diagonal elements of the matrix</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% &nbsp; Since only lower triangular elements of the matrix, the index of diagonal elements indicate</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% &nbsp; &nbsp; &nbsp; the start of a new column</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">diag_ind</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%d'</span>, <span class="cm-variable">num_col_ind</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%index of column of the nonzero elements</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">con_ind</span> = <span class="cm-builtin">zeros</span>(<span class="cm-variable">num_val</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%* ATTENTION: diag_ind(ii+1)-1 should be equal to vai_num</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%* ATTENTION: length(diag_ind)-1 should be equal to ncol</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">ii</span> = <span class="cm-number">1</span> : <span class="cm-number">1</span> : <span class="cm-variable">length</span>(<span class="cm-variable">diag_ind</span>)<span class="cm-number">-1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">con_ind</span>(<span class="cm-variable">diag_ind</span>(<span class="cm-variable">ii</span>):<span class="cm-variable">diag_ind</span>(<span class="cm-variable">ii</span><span class="cm-number">+1</span>)<span class="cm-number">-1</span>, :) = <span class="cm-variable">ii</span> <span class="cm-operator">*</span> <span class="cm-builtin">ones</span>(<span class="cm-variable">diag_ind</span>(<span class="cm-variable">ii</span><span class="cm-number">+1</span>)<span class="cm-operator">-</span><span class="cm-variable">diag_ind</span>(<span class="cm-variable">ii</span>), <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%read the row indexes of nonzero elements</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">row_ind</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%d'</span>, <span class="cm-variable">num_row_ind</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%read the values of nonzero elements</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">readapproach</span> <span class="cm-operator">==</span> &nbsp;<span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%++++++++++++++++++++++++++++++++++</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%approach 1:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  [<span class="cm-operator">~</span>] = <span class="cm-variable">fgetl</span>(<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals</span> = <span class="cm-builtin">zeros</span>(<span class="cm-variable">nnzero</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">kk</span> = <span class="cm-number">1</span>:<span class="cm-number">1</span>:<span class="cm-variable">nnzero</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">val_str</span>  = <span class="cm-variable">fgetl</span>(<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">val_str</span>  = <span class="cm-variable">strrep</span>(<span class="cm-variable">val_str</span>, <span class="cm-string">'D'</span>, <span class="cm-string">'e'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">val_str</span>  = <span class="cm-variable">strrep</span>(<span class="cm-variable">val_str</span>, <span class="cm-string">'d'</span>, <span class="cm-string">'e'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals</span>(<span class="cm-variable">kk</span>) = <span class="cm-variable">str2double</span>(<span class="cm-variable">val_str</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">elseif</span> <span class="cm-variable">readapproach</span> <span class="cm-operator">==</span> <span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%++++++++++++++++++++++++++++++++++</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%approach 2:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals_str_mat</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%f %c %c %d'</span>, [<span class="cm-number">4</span>, <span class="cm-variable">num_val</span>]);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">jj</span> = <span class="cm-number">1</span>:<span class="cm-variable">num_row_ind</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">strcmpi</span>(<span class="cm-variable">vals_str_mat</span>(<span class="cm-number">3</span>,<span class="cm-variable">jj</span>), <span class="cm-string">'-'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals_str_mat</span>(<span class="cm-number">4</span>,<span class="cm-variable">jj</span>) = <span class="cm-operator">-</span><span class="cm-variable">vals_str_mat</span>(<span class="cm-number">4</span>,<span class="cm-variable">jj</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals</span> = <span class="cm-variable">vals_str_mat</span>(<span class="cm-number">1</span>,:) <span class="cm-operator">.*</span> (<span class="cm-number">10</span><span class="cm-operator">.^</span><span class="cm-variable">vals_str_mat</span>(<span class="cm-number">4</span>,:));</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">vals</span> = <span class="cm-variable">vals</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">matrixL</span> = <span class="cm-variable">sparse</span>(<span class="cm-variable">row_ind</span>, <span class="cm-variable">con_ind</span>, <span class="cm-variable">vals</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">matrix</span>  = <span class="cm-variable">matrixL</span> <span class="cm-operator">+</span> <span class="cm-variable">matrixL</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">matrix</span>(<span class="cm-variable">logical</span>(<span class="cm-builtin">eye</span>(<span class="cm-variable">nrow</span>))) = <span class="cm-number">1</span><span class="cm-operator">/</span><span class="cm-number">2</span> <span class="cm-operator">*</span> <span class="cm-variable">diag</span>(<span class="cm-variable">matrix</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%read the right-hand term</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">readapproach</span> <span class="cm-operator">==</span> &nbsp;<span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%++++++++++++++++++++++++++++++++++</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%approach 1:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_term</span> = <span class="cm-builtin">zeros</span>(<span class="cm-variable">num_right_term</span>,<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">num_right_term</span> <span class="cm-operator">~</span>= <span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">jj</span> = <span class="cm-number">1</span> : <span class="cm-number">1</span> : <span class="cm-variable">num_right_term</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_str</span> &nbsp; &nbsp;  = <span class="cm-variable">fgetl</span>(<span class="cm-variable">hbmat_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_str</span> &nbsp; &nbsp;  = <span class="cm-variable">strrep</span>(<span class="cm-variable">right_str</span>, <span class="cm-string">'D'</span>, <span class="cm-string">'e'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_str</span> &nbsp; &nbsp;  = <span class="cm-variable">strrep</span>(<span class="cm-variable">right_str</span>, <span class="cm-string">'d'</span>, <span class="cm-string">'e'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_term</span>(<span class="cm-variable">jj</span>) = <span class="cm-variable">str2double</span>(<span class="cm-variable">right_str</span>)<span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">elseif</span> <span class="cm-variable">readapproach</span> <span class="cm-operator">==</span> <span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%++++++++++++++++++++++++++++++++++</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%approach 2:</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">num_right_term</span> <span class="cm-operator">~</span>= <span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_str_mat</span> = <span class="cm-variable">fscanf</span>(<span class="cm-variable">hbmat_id</span>, <span class="cm-string">'%f %c %c %d'</span>, [<span class="cm-number">4</span>,<span class="cm-variable">num_right_term</span>]);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_term</span> &nbsp;  = <span class="cm-variable">right_str_mat</span>(<span class="cm-number">1</span>,:) <span class="cm-operator">.*</span> (<span class="cm-number">10</span><span class="cm-operator">.^</span><span class="cm-variable">right_str_mat</span>(<span class="cm-number">4</span>,:));</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_term</span> &nbsp;  = <span class="cm-variable">right_term</span><span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">else</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">right_term</span> &nbsp;  = [];</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%close file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fclose</span>(<span class="cm-variable">hbmat_id</span>); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 3680px;"></div><div class="CodeMirror-gutters" style="display: none; height: 3680px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="matlab" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="matlab"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">function</span> <span class="cm-variable">matrix</span> = <span class="cm-variable">reorderhbmat</span>(<span class="cm-variable">matrix</span>, <span class="cm-variable">mapping_file</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% This function reset the order of the matrix exported with Ansys 'HBMAT' command </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% &nbsp; &nbsp; &nbsp; (Stiffness/mass/damping matrix in Harwell-Boeing format)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% Code by Yang, Jiashu</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% 2021-08-07, at Insititute for Risk and Reliability, Leibniz University Hannover</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">% Email: jiashuyang@tongji.edu.cn</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%open the mapping file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">mappingid</span>  = <span class="cm-variable">fopen</span>(<span class="cm-variable">mapping_file</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%the first line: head of the file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-operator">~</span>] &nbsp; &nbsp; &nbsp;  = <span class="cm-variable">fgetl</span>(<span class="cm-variable">mappingid</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">nequ</span> &nbsp; &nbsp; &nbsp; = <span class="cm-builtin">size</span>(<span class="cm-variable">matrix</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">equ_id</span> &nbsp; &nbsp; = <span class="cm-builtin">zeros</span>(<span class="cm-variable">nequ</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">node_id</span> &nbsp;  = <span class="cm-builtin">zeros</span>(<span class="cm-variable">nequ</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dof_id_str</span> = <span class="cm-variable">cell</span>(<span class="cm-variable">nequ</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">ii</span> = <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dim</span> = <span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">while</span> <span class="cm-operator">~</span><span class="cm-variable">feof</span>(<span class="cm-variable">mappingid</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ii</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="cm-variable">ii</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">line</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="cm-variable">fgetl</span>(<span class="cm-variable">mappingid</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">line</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="cm-variable">strip</span>(<span class="cm-variable">line</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">strcell</span> &nbsp; &nbsp; &nbsp;  = <span class="cm-variable">strsplit</span>(<span class="cm-variable">line</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">equ_id</span>(<span class="cm-variable">ii</span>) &nbsp; &nbsp; = <span class="cm-variable">str2double</span>(<span class="cm-variable">strcell</span>{<span class="cm-number">1</span>});</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">node_id</span>(<span class="cm-variable">ii</span>) &nbsp;  = <span class="cm-variable">str2double</span>(<span class="cm-variable">strcell</span>{<span class="cm-number">2</span>});</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id_str</span>{<span class="cm-variable">ii</span>} = <span class="cm-variable">strcell</span>{<span class="cm-number">3</span>};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">dim</span> <span class="cm-operator">==</span> <span class="cm-number">2</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable">strcmpi</span>(<span class="cm-variable">strcell</span>{<span class="cm-number">3</span>}, <span class="cm-string">'UZ'</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dim</span> = <span class="cm-number">3</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%-----------------------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dof_id</span> = <span class="cm-builtin">zeros</span>(<span class="cm-variable">nequ</span>,<span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-variable">dim</span> <span class="cm-operator">==</span> <span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">% for 2D structures</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">jj</span> = <span class="cm-number">1</span> : <span class="cm-number">1</span> : <span class="cm-variable">nequ</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">switch</span> <span class="cm-variable">dof_id_str</span>{<span class="cm-variable">jj</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'UX'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'UY'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'ROTZ'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">3</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">otherwise</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">error</span>(<span class="cm-string">'Please check the type of element and DOF labels!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">elseif</span> <span class="cm-variable">dim</span> <span class="cm-operator">==</span> <span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">% for 3D structures</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%---------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">jj</span> = <span class="cm-number">1</span> : <span class="cm-number">1</span> : <span class="cm-variable">nequ</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">switch</span> <span class="cm-variable">dof_id_str</span>{<span class="cm-variable">jj</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'UX'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">1</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'UY'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">2</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'UZ'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">3</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'ROTX'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">4</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'ROTY'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">5</span>; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">case</span> <span class="cm-string">'ROTZ'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_id</span>(<span class="cm-variable">jj</span>) = <span class="cm-number">6</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">otherwise</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-builtin">error</span>(<span class="cm-string">'Please check the type of element and DOF labels!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%-----------------------------------------------------------------------------------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">node_list</span>  = <span class="cm-variable">unique</span>(<span class="cm-variable">node_id</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">n_node</span> &nbsp; &nbsp; = <span class="cm-variable">length</span>(<span class="cm-variable">node_list</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">ord_origin</span> = <span class="cm-builtin">zeros</span>(<span class="cm-variable">nequ</span>, <span class="cm-number">1</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">dof_loc</span> &nbsp;  = <span class="cm-number">0</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">ii</span> = <span class="cm-number">1</span>:<span class="cm-number">1</span>:<span class="cm-variable">n_node</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%equation with respect to node ii</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">equid_node_i</span> &nbsp; = <span class="cm-variable">find</span>(<span class="cm-variable">node_id</span> <span class="cm-operator">==</span> <span class="cm-variable">node_list</span>(<span class="cm-variable">ii</span>));</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%number of DOF of node ii</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ndof_node_i</span> &nbsp;  = <span class="cm-variable">length</span>(<span class="cm-variable">equid_node_i</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%DOF lables of node ii</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_node_i</span> &nbsp; &nbsp; = <span class="cm-variable">dof_id</span>(<span class="cm-variable">equid_node_i</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%the original order of equations (DOFs) corresponding to node ii</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  [<span class="cm-operator">~</span>, <span class="cm-variable">ind</span>] &nbsp; &nbsp; &nbsp; = <span class="cm-variable">sort</span>(<span class="cm-variable">dof_node_i</span>, <span class="cm-string">'ascend'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-comment">%reset the order</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">equ_ord_origin</span> = <span class="cm-variable">equid_node_i</span>(<span class="cm-variable">ind</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ord_origin</span>(<span class="cm-variable">equ_ord_origin</span>) = <span class="cm-variable">dof_loc</span><span class="cm-number">+1</span> : <span class="cm-variable">dof_loc</span><span class="cm-operator">+</span><span class="cm-variable">ndof_node_i</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">dof_loc</span> &nbsp; &nbsp; &nbsp;  = <span class="cm-variable">dof_loc</span> <span class="cm-operator">+</span> <span class="cm-variable">ndof_node_i</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tmp1</span> = <span class="cm-variable">sort</span>(<span class="cm-variable">ord_origin</span>, <span class="cm-string">'ascend'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tmp2</span> = (<span class="cm-number">1</span>:<span class="cm-number">1</span>:<span class="cm-variable">nequ</span>)<span class="cm-operator">'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">if</span> <span class="cm-builtin">sum</span>(<span class="cm-builtin">abs</span>(<span class="cm-variable">tmp1</span> <span class="cm-operator">-</span> <span class="cm-variable">tmp2</span>)) <span class="cm-operator">~</span>= <span class="cm-number">0</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">warning</span>(<span class="cm-string">'Not all columns/rows of the matrix are included!'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  [<span class="cm-operator">~</span>, <span class="cm-variable">ord_reset</span>] = <span class="cm-variable">sort</span>(<span class="cm-variable">ord_origin</span>, <span class="cm-string">'ascend'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">matrix</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="cm-variable">matrix</span>(<span class="cm-variable">ord_reset</span>,<span class="cm-variable">ord_reset</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment">%close file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fclose</span>(<span class="cm-variable">mappingid</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">end</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 2622px;"></div><div class="CodeMirror-gutters" style="display: none; height: 2622px;"></div></div></div></pre><p><strong><span>大树</span></strong><span> </span></p><p><strong><span>写于2021年8月9日</span></strong></p>
+        </div>
+    </div>
+</body>
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>内容</h2>
+            </header>
+            <ul>
+                <li><a href="http://feacat.com/index.html">首页</a></li>
+                <li><a href="http://feacat.com/FEA.html">有限元</a></li>
+                <li><a href="http://feacat.com/civil.html">土木</a></li>
+                <li><a href="http://feacat.com/mechanical.html">机械</a></li>
+                <li><a href="http://feacat.com/software.html">软件</a></li>
+                <li><a href="http://feacat.com/book.html">好书推荐</a></li>
+                <li><a href="http://feacat.com/others.html">其他</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section -->
+        <section>
+            <header class="major">
+                <h2>联系我</h2>
+            </header>
+            <p>如果文章需要转载请注明出处，并通过以下方式联系我</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="#">392176462@qq.com</a></li>
+                <li class="icon solid fa-phone">18817729451</li>
+                <li class="icon solid fa-home">上海市</li>
+            </ul>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. All rights reserved.</p>
+        </footer>
+
+    </div>
+</div>
+</html>
