@@ -597,4 +597,44 @@ header, .context-menu, .megamenu-content, footer{
 <body class='typora-export os-windows'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='如何输出一份完整的计算报告'><span>如何输出一份完整的计算报告</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#如何输出一份完整的计算报告">如何输出一份完整的计算报告</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n353"><a class="md-toc-inner" href="#简介">简介</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#文档要求">文档要求</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n30"><a class="md-toc-inner" href="#工作规范化">工作规范化</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" href="#软件">软件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n68"><a class="md-toc-inner" href="#总结">总结</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n58"><a class="md-toc-inner" href="#参考">参考</a></span></p></div><p><img src="如何输出一份完整的计算报告.assets/image-20210820145217814.png" referrerpolicy="no-referrer" alt="image-20210820145217814"></p><h2 id='简介'><span>简介</span></h2><p><span>很多人对有限元计算的理解非常的片面，网格和漂亮的应力云图并不能代表其全貌。一方面，软件致力于将有限元计算门槛降低简单化，很多简单的问题模型、网格和结果都能自动生成，另一方面，我们希望有限元计算的流程规范化，工程设计中考虑的种种参数哪些可以用有限元输出，哪些参数能在有限元计算输入时就考虑完全。首先要做的就是将计算报告规范化，明确报告的内容和结论。</span></p><h2 id='文档要求'><span>文档要求</span></h2><p><span>一份完整的报告一般包含以下的内容：</span></p><ol><li><p><span>Objectives and scope of the analysis.</span></p><p><span>分析的目的和范围，目的和范围需要明确不能发散，如果只想得到静强度分析的结果，就不要做多余的分析。</span></p></li></ol><ol start='2' ><li><p><span>Analysis requirements and acceptance criteria.</span></p><p><span>对结果的要求，如果分析只想得到一个趋势，我们可以放松对精度的要求；如果对精度的要求较高，就需要提高网格质量。</span></p></li><li><p><span> FEA software used</span></p><p><span>采用的有限元软件是什么，该软件为通用计算软件还是行业内的软件，有没有得到验证。</span></p></li><li><p><span> Description of physical problem.</span></p><p><span>对物理问题的描述。</span></p></li><li><p><span> Description of engineering model.</span></p><p><span>对工程模型的描述，重要的几何尺寸、配合和公差等。</span></p></li><li><p><span> Type of analysis.</span></p><p><span>分析的类型，静力学、动力学、屈曲、非线性等等。</span></p></li><li><p><span> System of units.</span></p><p><span>采用的单位。</span></p></li><li><p><span> Coordinate axis systems.</span></p><p><span>坐标系：笛卡尔坐标系、圆柱坐标系等等</span></p></li><li><p><span> Description of FEA model</span></p><p><span>.有限元模型的概述，单元数量、节点，单元整体质量。</span></p></li><li><p><span> Plots of full FEA model and local details.</span></p><p><span>网格局部细节，比如倒角的处理、螺栓、焊缝、轴承的处理。</span></p></li><li><p><span> Element types and degrees of freedom per node.</span></p><p><span>单元的种类结构和属性，节点的自由度。</span></p></li><li><p><span> Material properties.</span></p><p><span>材料属性，材料属性参数的来源必须有充分的依据。</span></p></li><li><p><span> Element properties (stiffness &amp; mass properties）</span></p><p><span>单元属性，单元是否开启了某些不常用的选项，针对接触的设置需特别关注。</span></p></li><li><p><span> FE loads and boundary conditions.</span></p><p><span>如何加载以及边界条件。</span></p></li><li><p><span> Description and presentation of the FEA results</span></p><p><span>有限元结果的展示和描述。</span></p></li><li><p><span> Assessment of accuracy of the FEA results.</span></p><p><span>结果的适用条件，精度如何。</span></p></li><li><p><span> Conclusions of the analysis.</span></p><p><span>结合工程实际给出问题的结论。</span></p></li><li><p><span> List of references.</span></p><p><span>列出参考文献。</span></p></li></ol><h2 id='工作规范化'><span>工作规范化</span></h2><p><span>另外除了技术方面的细节，文档的发布需符合设计开发的流程，并满足公司的要求。</span></p><ol><li><p><span>Is the job specification identified and referenced in the analysis documentation?</span></p><p><span>工作规范和计算的规范是否列入的文档中，如果没有，需不需要制定流程。</span></p></li><li><p><span>Are the objectives and scope of the analysis clearly stated and are they consistent with those of the job specification?</span></p><p><span>文档的使用范围，是否涉密。</span></p></li><li><p><span>Has advantage been taken of any previous experimental, analytical, or numerical works that are relevant to this problem?</span></p><p><span>是否有可供参考与验证的试验和分析。</span></p></li></ol><h2 id='软件'><span>软件</span></h2><p><span>商用的软件需考虑版权，分析的内容应充分考虑软件的使用范围和限制。</span></p><ol><li><p><span>Are the capabilities and limitations of the FEA software used to perform the required analysis stated in the analysis documentation?</span></p><p><span>软件是否够用，是否需购买其他软件。</span></p></li><li><p><span>Does the vendor of the FEA software have a quality system to ensure that appropriate standards are maintained in software development and maintenance.</span></p><p><span>软件的可靠性如何。</span></p></li></ol><h2 id='总结'><span>总结</span></h2><p><span>一份完成的报告在充分考虑问题的背景、目标、网格、设置、工程实践等基本的技术要求外，还需列出文档的时间、使用范围、版权、密级等因素，并契合设计开发流程。</span></p><h2 id='参考'><span>参考</span></h2><ol start='' ><li><span>GUIDELINE FOR EVALUATION OF FINITE ELEMENTS AND RESULTS_SSC-387</span></li></ol><p><strong><span>我是FE_cat，感谢您读完本文</span></strong><span>。</span></p><p><strong><span>写于2021年8月20日</span></strong></p><p>&nbsp;</p></div></div>
 </body>
+	
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>内容</h2>
+            </header>
+            <ul>
+                <li><a href="http://feacat.com/index.html">首页</a></li>
+                <li><a href="http://feacat.com/FEA.html">有限元</a></li>
+                <li><a href="http://feacat.com/civil.html">土木</a></li>
+                <li><a href="http://feacat.com/mechanical.html">机械</a></li>
+                <li><a href="http://feacat.com/software.html">软件</a></li>
+                <li><a href="http://feacat.com/book.html">好书推荐</a></li>
+                <li><a href="http://feacat.com/others.html">其他</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section -->
+        <section>
+            <header class="major">
+                <h2>联系我</h2>
+            </header>
+            <p>如果文章需要转载请注明出处，并通过以下方式联系我</p>
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="#">392176462@qq.com</a></li>
+                <li class="icon solid fa-phone">18817729451</li>
+                <li class="icon solid fa-home">上海市</li>
+            </ul>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. All rights reserved.</p>
+        </footer>
+
+    </div>
+</div>
 </html>
